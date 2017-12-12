@@ -7,5 +7,12 @@ class BookmarkManager < Sinatra::Base
     erb :'links/index'
   end
 
+  get '/links/new' do
+    erb :'links/add_link'
+  end
 
+  post '/links' do
+    @title = params[:title]
+    @url = params[:url]
+  end
 end

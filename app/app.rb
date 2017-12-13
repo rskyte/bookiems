@@ -22,10 +22,10 @@ class BookmarkManager < Sinatra::Base
     redirect to('/links')
   end
 
-  get '/tag/bubbles' do
-    links = Link.all
-    @tagged_links = links.select { |link| link.tags.map(&:name).include? 'bubbles' }
-    erb :bubbles_tags
+  get '/tag/:name' do
+    tag = Tag.first(name: params[:name])
+    @links = tag ? tag.links : []
+    erb :tag_filter
   end
 
   run! if app_file == $0

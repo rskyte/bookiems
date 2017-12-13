@@ -7,11 +7,11 @@ class BookmarkManager < Sinatra::Base
 
   get '/links' do
     @links = Link.all
-    erb :'links/index'
+    erb :index
   end
 
   get '/links/new' do
-    erb :'links/add_link'
+    erb :add_link
   end
 
   post '/links' do
@@ -20,6 +20,12 @@ class BookmarkManager < Sinatra::Base
     link.tags << tag
     link.save
     redirect to('/links')
+  end
+
+  get '/tag/bubbles' do
+    links = Link.all
+    @tagged_links = links.select { |link| link.tags.map(&:name).include? 'bubbles' }
+    erb :bubbles_tags
   end
 
   run! if app_file == $0

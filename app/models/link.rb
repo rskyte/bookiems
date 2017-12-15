@@ -1,7 +1,5 @@
 require './app/data_mapper_setup.rb'
 
-#DataMapper::Logger.new($stdout, :debug)
-
 class Link
   include DataMapper::Resource
 

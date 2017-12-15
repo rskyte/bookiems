@@ -11,4 +11,10 @@ feature "create new links" do
       expect(page).to have_content 'Reddit'
     end
   end
+  scenario 'links can be created with multiple tags' do
+    add_bookmark('Reddit', 'fun,procrastination,entertainment')
+    within 'ul#links' do
+      expect(page).to have_content '-fun -procrastination -entertainment'
+    end
+  end
 end

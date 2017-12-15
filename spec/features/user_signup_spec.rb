@@ -25,4 +25,10 @@ feature 'User Login' do
     expect(page).to have_content ''
     expect(User.count).to eq 0
   end
+
+  scenario 'user cannot sign up with an email address which is already registered' do
+    2.times { signup }
+    expect(page).to have_content 'Email is already taken'
+    expect(User.count).to eq 1
+  end
 end

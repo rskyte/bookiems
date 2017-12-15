@@ -83,6 +83,7 @@ GEM
       rack
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
+    rake (12.3.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -101,6 +102,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     stringex (1.5.1)
     tilt (2.0.8)
     uuidtools (2.1.5)
@@ -111,14 +114,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   capybara
   data_mapper
   database_cleaner
   dm-migrations
   dm-postgres-adapter
   pry
+  rake
   rspec
   sinatra
+  sinatra-flash
 
 RUBY VERSION
    ruby 2.4.1p111

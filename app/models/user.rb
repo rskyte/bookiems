@@ -20,8 +20,13 @@ class User
   end
 
   def password=(password)
-    @password = BCrypt::Password.create(password)
-    self.password_digest = @password
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def self.authenticate(email, pass)
+    user = User.first(email)
+    user && user.password_auth == pass ? user : nil
   end
 
 end

@@ -13,4 +13,11 @@ feature 'Signing in' do
     expect(page).to have_content 'Welcome! joebloggs@hotmail.com'
   end
 
+  scenario 'incorrect login details cannot sign in' do
+    signup
+    signin(pass: 'jim')
+    expect(current_path).to eq '/'
+    expect(page).to have_content 'Email and/or password incorrect'
+  end
+
 end

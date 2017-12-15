@@ -12,3 +12,11 @@ def add_tag(tag)
   fill_in 'title', with: 'Makers Academy'
   click_button 'Create tag'
 end
+
+def signup(email = 'joebloggs@hotmail.com', pass = 'joebloggs', pass_conf = 'joebloggs')
+  visit '/signup'
+  fill_in :email, with: email
+  fill_in :password, with: pass
+  fill_in :password_confirmation, with: pass_conf
+  click_on 'Sign up'
+end

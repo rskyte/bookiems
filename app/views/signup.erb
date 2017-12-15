@@ -1,13 +1,14 @@
 <h2> Sign up </h2>
+<%=flash[:signup]%>
 <form action='/signup' method='POST'>
   <label for='email'>email:
-    <input type='text' name='email' />
+    <input type='text' name='email' value= <%= flash[:email] %>>
   </label>
   <label for='password'>password:
-    <input type='password' name='password' />
+    <input type='password' name='password'>
   </label>
   <label for='password_confirmation'>password_confirmation:
-    <input type='password' name='password_confirmation' />
+    <input type='password' name='password_confirmation'>
   </label>
   <input type='submit' value= 'Sign up'>
 </form>

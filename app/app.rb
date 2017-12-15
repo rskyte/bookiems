@@ -15,13 +15,22 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/' do
+    flash[:invalid_signin]
     erb :signin
   end
 
   post '/signin' do
     user = User.first(email: params[:email])
-    session[:user_id] = user.id
-    redirect '/links'
+    p params[:password]
+    p user.password_digest
+    p user
+    p user.password_auth
+    if user.password_auth == params[:password]
+      session[:user_id] = user.id
+      redirect '/links'
+    else
+      redirect '/'
+    end
   end
 
   get '/signup' do

@@ -1,5 +1,6 @@
 <h1>Bookmark Manager</h1>
 <h2>Sign in</h2>
+
 <form action='/signin' method='POST'>
   <label for='email'>email:
     <input type='email' required name='email' value= "<%=flash[:email]%>" >
@@ -9,9 +10,14 @@
   </label>
   <input type='submit' value= 'Sign in'>
 </form>
+
+<%if flash[:invalid_signin]%>
+  <%=flash[:invalid_signin]%>
+<%end%>
+
 <br>
 <br>
 New user?
 <form action='/signup'>
   <input type='submit' value='Sign up'>
-</form> 
+</form>

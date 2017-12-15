@@ -15,9 +15,13 @@ class User
   validates_confirmation_of :password
   validates_format_of :email, :as => :email_address
 
+  def password_auth
+    @password = BCrypt::Password.new(password_digest)
+  end
+
   def password=(password)
-    @password = password
-    self.password_digest = BCrypt::Password.create(password)
+    @password = BCrypt::Password.create(password)
+    self.password_digest = @password
   end
 
 end

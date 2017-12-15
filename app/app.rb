@@ -10,7 +10,7 @@ class BookmarkManager < Sinatra::Base
 
   helpers do
     def current_user
-      User.first(session[:email])
+      @current_user ||= User.get(session[:user_id])
     end
   end
 
@@ -21,6 +21,7 @@ class BookmarkManager < Sinatra::Base
   post '/signup' do
     user = User.create(email: params[:email], password: params[:password],
       password_confirmation: params[:password_confirmation])
+    session[:user_id] = user.id if user.valid?
     flash[:errors] = user.errors.values.flatten
     flash[:email] = user.email
     redirect(user.valid? ? '/links' : '/signup')

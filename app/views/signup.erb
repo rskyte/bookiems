@@ -1,8 +1,10 @@
 <h2> Sign up </h2>
-<%=flash[:signup]%>
+<%if flash[:errors]%>
+<%flash[:errors].each { |e|%> <%=e%> <%}%>
+<%end%>
 <form action='/signup' method='POST'>
   <label for='email'>email:
-    <input type='text' name='email' value= <%= flash[:email] %>>
+    <input type='text' required name='email' value= "<%=flash[:email]%>" >
   </label>
   <label for='password'>password:
     <input type='password' name='password'>

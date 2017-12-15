@@ -8,15 +8,15 @@ feature 'User Login' do
   end
 
   scenario 'user cannot signup when password confirmation fails' do
-    signup
+    signup(pass: 'jim')
     expect(current_path).to eq '/signup'
-    expect(page).to have_content 'Password and confirmation password do not match'
+    expect(page).to have_content 'Password does not match the confirmation'
     expect(User.count).to eq 0
   end
 
   scenario 'user cannot sign up without an email address' do
-    signup('')
-    expect(page).to have_content 'Invalid email address'
+    signup(email: nil)
+    expect(page).to have_content 'Email must not be blank'
     expect(User.count).to eq 0
   end
 end

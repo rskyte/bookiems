@@ -21,7 +21,7 @@ class BookmarkManager < Sinatra::Base
   post '/signup' do
     user = User.create(email: params[:email], password: params[:password],
       password_confirmation: params[:password_confirmation])
-    flash[:signup] = 'Password and confirmation password do not match'
+    flash[:errors] = user.errors.values.flatten
     flash[:email] = user.email
     redirect(user.valid? ? '/links' : '/signup')
   end

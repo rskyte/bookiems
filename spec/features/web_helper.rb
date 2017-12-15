@@ -13,7 +13,7 @@ def add_tag(tag)
   click_button 'Create tag'
 end
 
-def signup(email = 'joebloggs@hotmail.com', pass = 'joebloggs', pass_conf = 'joebloggs')
+def signup(email: 'joebloggs@hotmail.com', pass: 'joebloggs', pass_conf: 'joebloggs')
   visit '/signup'
   fill_in :email, with: email
   fill_in :password, with: pass

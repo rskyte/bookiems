@@ -19,4 +19,10 @@ feature 'User Login' do
     expect(page).to have_content 'Email must not be blank'
     expect(User.count).to eq 0
   end
+
+  scenario 'user cannot sign up with and invalid email address' do
+    signup(email: 'invalid')
+    expect(page).to have_content ''
+    expect(User.count).to eq 0
+  end
 end

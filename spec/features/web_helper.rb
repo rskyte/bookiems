@@ -20,3 +20,10 @@ def signup(email: 'joebloggs@hotmail.com', pass: 'joebloggs', pass_conf: 'joeblo
   fill_in :password_confirmation, with: pass_conf
   click_on 'Sign up'
 end
+
+def signin(email: 'joebloggs@hotmail.com', pass: 'joebloggs')
+  visit '/'
+  fill_in :email, with: email
+  fill_in :password, with: pass
+  click_on 'Sign in'
+end
